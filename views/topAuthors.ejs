@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="center">
+        <table>
+            <tr>
+                <th>Author</th>
+                <th>Number of Quotes</th>
+            </tr>
+            <% topA.forEach(element => { %>
+                <tr>
+                    <td>
+                        <%= element[0] %>
+                    </td>
+                    <td>
+                        <%= element[1] %>
+                    </td>
+                </tr>
+            <% }); %>
+        </table>
+    </div>
+</body>
+</html>
