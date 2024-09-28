@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Render } from '@nestjs/common';
+import { Controller, Get, Param, Query, Render } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -41,5 +41,22 @@ export class AppController {
   deleteQuote(@Param('id') id: string) {
     let deleteQuote = this.appService.deleteQuote(id)
     return (deleteQuote ? "Sikeres törlés" : "Ismeretlen idézet")
+  }
+
+  @Get('search')
+  @Render('search')
+  search(@Query() query) {
+    return this.appService.search(query?.text)
+  }
+
+  @Get('authorRandomForm')
+  @Render('authorRandomForm')
+  authorRandomForm() {}
+
+  
+  @Get('authorRandom')
+  @Render('authorRandom')
+  authorRandom(@Query() query) {
+    return this.appService.authorRandom(query?.author)
   }
 }

@@ -59,4 +59,24 @@ export class AppService {
     });
     return succeed
   }
+
+  search(text: string){
+    let searched_quotes = []
+    quotes.quotes.forEach(quote => {
+      if(text == undefined || quote.quote.toLocaleLowerCase().includes(text.toLocaleLowerCase())){
+        searched_quotes.push(quote.quote)
+      }
+    });
+    return {quotes: searched_quotes}
+  }
+  
+  authorRandom(author: string){
+    let searched_quotes = []
+    quotes.quotes.forEach(quote => {
+      if(author != undefined && quote.author.toLocaleLowerCase() == author.toLocaleLowerCase()){
+        searched_quotes.push(quote.quote)
+      }
+    });
+    return {quote: searched_quotes.length > 0 ? searched_quotes[Math.floor(Math.random() * searched_quotes.length)] : "Nincs ilyen szerző!"}
+  }
 }
